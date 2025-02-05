@@ -1,0 +1,47 @@
+# 忽略 Python 虚拟环境
+.venv/
+env/
+venv/
+
+runs/
+# 忽略 macOS 生成的系统文件
+.DS_Store
+
+# 忽略 Python 缓存文件
+__pycache__/
+*.py[cod]
+*.so
+
+# 忽略 Jupyter Notebook 生成的检查点
+.ipynb_checkpoints/
+
+# 忽略日志文件
+*.log
+*.out
+*.err
+
+# 忽略 IDE/编辑器相关文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 忽略 Python 依赖文件
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 忽略环境变量文件
+.env
+.env.local
+.env.development
+.env.production
+
+# 忽略编译生成的文件
+build/
+dist/
+*.egg-info/
+*.png
+
+# 忽略 TensorFlow/PyTorch 相关的日志和缓存
+logs/
+wandb/
