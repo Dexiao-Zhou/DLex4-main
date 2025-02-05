@@ -87,7 +87,8 @@ class ResNet(nn.Module):
         # 第三部分：分类器，包含池化、扁平化和全连接层
         self.seq3 = nn.Sequential(
             nn.AvgPool2d(10),                           # 平均池化，将特征图降至固定大小（假设输入尺寸匹配）
-            nn.Flatten(),                               # 将多维张量展平成一维
+            nn.Flatten(),               # 将多维张量展平成一维
+            nn.Dropout(0.5),  # 添加 Dropout
             nn.Linear(in_features=512, out_features=num_classes),  # 全连接层，将特征映射到类别数
             nn.Sigmoid()                                # Sigmoid 激活函数，输出范围为 (0, 1)，适用于二分类
         )
