@@ -35,14 +35,15 @@ class Trainer:
 
     def save_checkpoint(self, epoch):
         """
-        保存当前模型的检查点
+        每 10 个 epoch 保存一次当前模型的检查点
         :param epoch: 当前训练的 epoch 序号，用于生成检查点文件名
         """
-        # 确保保存检查点的目录存在
-        os.makedirs("checkpoints", exist_ok=True)
-        # 保存模型的 state_dict 到指定的文件中
-        t.save({'state_dict': self._model.state_dict()}, 
-               f'checkpoints/checkpoint_{epoch:03d}.ckp')
+        if epoch % 10 == 0:  # 只有当 epoch 为 10 的倍数时才保存
+            os.makedirs("checkpoints", exist_ok=True)  # 确保检查点目录存在
+            checkpoint_path = f'checkpoints/checkpoint_{epoch:03d}.ckp'
+            t.save({'state_dict': self._model.state_dict()}, checkpoint_path)
+            print(f"✅ Checkpoint saved at {checkpoint_path}")
+
 
     def restore_checkpoint(self, epoch_n):
         """
